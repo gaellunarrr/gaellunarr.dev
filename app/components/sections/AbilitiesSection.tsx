@@ -1,7 +1,8 @@
 const projects = [
   {
     name: "Portfolio Personal",
-    description: "Web desarrollada con Next.js y TypeScript para mostrar trabajos.",
+    description:
+      "Web desarrollada con Next.js y TypeScript para mostrar trabajos.",
     link: "#",
   },
   {
@@ -13,7 +14,7 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="section">
+    <section id="abilities" className="section">
       <h2>Proyectos</h2>
       <div className="card-list">
         {projects.map((project) => (

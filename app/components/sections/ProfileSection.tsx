@@ -5,7 +5,10 @@ import { ScrollArrow } from "../ui/ScrollArrow";
 
 export default function ProfileSection() {
   return (
-    <main className="relative min-h-screen w-full bg-[#F9F5F0] flex items-center justify-center p-4 md:p-8 overflow-hidden font-sans">
+    <main
+      id="home"
+      className="relative min-h-screen w-full bg-[#F9F5F0] flex items-center justify-center p-4 md:p-8 overflow-hidden font-sans"
+    >
       {/* Contenedor Principal */}
       <div className="z-10 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4">
         {/* 1. Izquierda: Nombre (order-1 en móvil para quedar arriba) */}
@@ -43,7 +46,7 @@ export default function ProfileSection() {
                 alt="LinkedIn"
               />
               <Button
-                label="Descargar CV"
+                label="Download CV"
                 mobileLabel="CV"
                 href="/cv.pdf"
                 download

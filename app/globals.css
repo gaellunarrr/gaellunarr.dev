@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Opcional: Esto ayuda a que el scroll sea más "sedoso" en algunos navegadores */
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
