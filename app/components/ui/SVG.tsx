@@ -12,7 +12,7 @@ export function SVG({ href, src, alt, className }: SVGProps) {
     <a
       href={href}
       target="_blank"
-      className="group hover:scale-110 transition-transform hover:shadow-[0_0_0_2px_#B6985E]"
+      className="group hover:scale-110 transition-transform"
     >
       <Image
         src={src}

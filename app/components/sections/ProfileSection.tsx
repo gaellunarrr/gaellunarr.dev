@@ -10,7 +10,7 @@ export default function ProfileSection() {
       <div className="z-10 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4">
         {/* 1. Izquierda: Nombre (order-1 en móvil para quedar arriba) */}
         <div className="flex-1 text-center md:text-left order-1 md:order-1">
-          <h1 className="text-5xl md:text-7xl font-bold text-[#1A1A1A] tracking-tighter">
+          <h1 className="text-5xl md:text-7xl font-bold text-[#1A1A1B] tracking-tighter">
             Gael Luna
           </h1>
           <p className="text-xl md:text-2xl text-[#4A4A4A] font-light mt-2 md:ml-3 tracking-wide">
@@ -72,11 +72,7 @@ export default function ProfileSection() {
       </div>
 
       {/* Flecha de Scroll posicionada al fondo */}
-      <ScrollArrow
-        href="#experience"
-        label="Experience"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30"
-      />
+      <ScrollArrow href="#experience" label="Experience" />
 
       {/* Fondo Decorativo */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-20 pointer-events-none" />
