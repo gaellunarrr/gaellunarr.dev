@@ -1,37 +1,32 @@
 import { useState, useEffect } from "react";
 
-export function useActiveSection(
-  sectionIds: string[],
-  defaultSection = "home",
-) {
-  const [activeSection, setActiveSection] = useState(defaultSection);
+export function useActiveSection(sectionIds: string[]) {
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.6,
-    };
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
+    const handleScroll = () => {
+      // Buscamos cuál sección está más cerca de la parte superior del navegador
+      const offsets = sectionIds.map((id) => {
+        const el = document.getElementById(id);
+        if (!el) return { id, offset: Infinity };
+        // Calculamos la distancia del elemento al tope de la pantalla
+        const rect = el.getBoundingClientRect();
+        return { id, offset: Math.abs(rect.top) };
       });
+
+      // La sección con el offset más pequeño es la que el usuario está viendo
+      const closest = offsets.reduce((prev, curr) =>
+        prev.offset < curr.offset ? prev : curr,
+      );
+
+      setActiveSection(closest.id);
     };
 
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions,
-    );
+    window.addEventListener("scroll", handleScroll);
+    // Ejecutar una vez al inicio
+    handleScroll();
 
-    sectionIds.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [sectionIds]);
 
   return activeSection;

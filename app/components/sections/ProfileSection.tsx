@@ -1,7 +1,9 @@
+"use client";
 import Image from "next/image";
 import { Button } from "../ui/Button";
 import { SVG } from "../ui/SVG";
 import { ScrollArrow } from "../ui/ScrollArrow";
+import { ButtonMail } from "../ui/ButtonMail";
 
 export default function ProfileSection() {
   return (
@@ -11,23 +13,22 @@ export default function ProfileSection() {
     >
       {/* Contenedor Principal */}
       <div className="z-10 w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4">
-        {/* 1. Izquierda: Nombre (order-1 en móvil para quedar arriba) */}
-        <div className="flex-1 text-center md:text-left order-1 md:order-1">
+        {/* 1. Izquierda: Nombre e Info */}
+        <div className="flex-1 text-center md:text-left order-1 md:order-1 relative">
           <h1 className="text-5xl md:text-7xl font-bold text-[#1A1A1B] tracking-tighter">
             Gael Luna
           </h1>
           <p className="text-xl md:text-2xl text-[#4A4A4A] font-light mt-2 md:ml-3 tracking-wide">
             Full Stack Developer
           </p>
+          <ButtonMail />
         </div>
 
-        {/* 2. Centro: Círculo y Árbol (order-2 en móvil) */}
+        {/* 2. Centro: Círculo y Árbol */}
         <div className="relative flex-shrink-0 order-2 md:order-2">
           <div className="relative w-[280px] h-[280px] md:w-[450px] md:h-[450px] flex items-center justify-center">
-            {/* El Sol Rojo */}
             <div className="absolute inset-0 bg-[#BC002D] rounded-full shadow-2xl" />
 
-            {/* El Árbol (Anclado al círculo) */}
             <div className="absolute -top-[12%] -right-[11%] w-[70%] h-[70%] z-20 pointer-events-none">
               <Image
                 src="/tree.svg"
@@ -38,7 +39,6 @@ export default function ProfileSection() {
               />
             </div>
 
-            {/* Los Logos e Interacción */}
             <div className="relative z-30 flex gap-4 md:gap-8 items-center">
               <SVG
                 href="https://linkedin.com/in/gael-luna/"
@@ -60,7 +60,7 @@ export default function ProfileSection() {
           </div>
         </div>
 
-        {/* 3. Derecha: Biografía (order-3 en móvil) */}
+        {/* 3. Derecha: Biografía */}
         <div className="flex-1 text-center md:text-right order-3 md:order-3">
           <div className="max-w-sm mx-auto md:ml-auto">
             <h2 className="text-2xl font-bold text-[#1A1A1A] mb-3">
@@ -74,7 +74,7 @@ export default function ProfileSection() {
         </div>
       </div>
 
-      {/* Flecha de Scroll posicionada al fondo */}
+      {/* Flecha de Scroll */}
       <ScrollArrow href="#experience" label="Experience" />
 
       {/* Fondo Decorativo */}

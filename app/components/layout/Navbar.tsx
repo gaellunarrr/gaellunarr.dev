@@ -10,17 +10,23 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  // 1. Obtenemos solo los IDs para pasarlos al hook
   const sectionIds = navLinks.map((link) => link.id);
-
-  // 2. Usamos nuestra lógica reutilizable
   const activeSection = useActiveSection(sectionIds);
-  const isDarkSection =
-    activeSection === "experience" || activeSection === "abilities";
+  const isDarkSection = activeSection === "experience";
 
-  // 3. Renderizamos
   return (
-    <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-end gap-8">
+    <nav
+      className={`fixed z-50 transition-all duration-500 ease-in-out
+        /* 1. MÓVIL Y PANTALLAS HASTA 1799px (BARRA SUPERIOR) */
+        top-0 left-0 w-full flex flex-row justify-center items-center gap-6 py-5 px-6
+        bg-black/20 backdrop-blur-lg border-b border-white/5
+        
+        /* 2. SOLO PANTALLAS ULTRA ANCHAS (Desde 1800px en adelante) */
+        min-[1800px]:top-1/2 min-[1800px]:left-auto min-[1800px]:right-12 min-[1800px]:-translate-y-1/2 
+        min-[1800px]:w-auto min-[1800px]:flex-col min-[1800px]:items-end min-[1800px]:gap-10 
+        min-[1800px]:bg-transparent min-[1800px]:backdrop-blur-none min-[1800px]:border-none min-[1800px]:py-0
+      `}
+    >
       {navLinks.map((link) => (
         <NavItem
           key={link.id}
@@ -34,26 +40,26 @@ export default function Navbar() {
   );
 }
 
-// --- SUB-COMPONENTE DE UI ---
-// Lo dejamos en el mismo archivo para no crear tantos archivos pequeños,
-// pero fuera de la función principal para mantener el orden.
-
-interface NavItemProps {
+function NavItem({
+  name,
+  id,
+  isActive,
+  isDarkSection,
+}: {
   name: string;
   id: string;
   isActive: boolean;
   isDarkSection: boolean;
-}
-
-function NavItem({ name, id, isActive, isDarkSection }: NavItemProps) {
+}) {
   return (
     <button
       onClick={() => smoothScrollTo(id)}
       className={`group relative flex items-center transition-all duration-300 ease-in-out 
-        ${isActive ? "scale-110" : "hover:scale-110"}`}
+        ${isActive ? "scale-105 min-[1800px]:scale-110" : "hover:scale-105 min-[1800px]:hover:scale-110"}`}
     >
       <span
-        className={`font-bold text-sm tracking-[0.2em] uppercase transition-all duration-300 mr-4
+        className={`font-bold text-[11px] min-[1800px]:text-sm tracking-[0.2em] uppercase transition-all duration-300
+        min-[1800px]:mr-6
         ${
           isActive
             ? "text-[#BC002D]"
@@ -66,8 +72,8 @@ function NavItem({ name, id, isActive, isDarkSection }: NavItemProps) {
       </span>
 
       <div
-        className={`relative transition-all duration-500 ease-out overflow-visible
-        ${isActive ? "w-16" : "w-0 group-hover:w-16"}`}
+        className={`hidden min-[1800px]:block relative transition-all duration-500 ease-out overflow-visible
+        ${isActive ? "min-[1800px]:w-16" : "w-0 min-[1800px]:group-hover:w-16"}`}
       >
         <div
           className={`absolute right-0 top-1/2 -translate-y-1/2 transition-all duration-500 transform

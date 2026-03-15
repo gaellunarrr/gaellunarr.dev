@@ -1,0 +1,9 @@
+export default function ProfileSection() {
+  const [copied, setCopied] = useState(false);
+  const email = "tu.email@ejemplo.com"; // Cambia esto por tu correo real
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };

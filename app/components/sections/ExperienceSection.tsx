@@ -1,54 +1,46 @@
 import { experience } from "@/app/constants/experience";
 import { ProjectBento } from "../ui/ProjectBento";
+import { ScrollArrow } from "../ui/ScrollArrow";
 
 export default function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="relative min-h-screen w-full bg-[#0D0D0D] py-24 px-6 md:px-12 overflow-hidden"
+      className="relative min-h-screen w-full bg-[#0D0D0D] py-32 px-6 md:px-12 overflow-hidden"
     >
-      {/* Contenedor principal expandido a 7xl para darle espacio al Grid */}
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Título Estilo Moderno */}
-        <div className="mb-16 md:mb-24">
-          <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase inline-block">
+        {/* Título de Sección */}
+        <div className="mb-20 md:mb-32">
+          <h2 className="text-6xl md:text-8xl font-black text-white tracking-tighter uppercase inline-block">
             Experience<span className="text-[#9A001F]">.</span>
           </h2>
-          <div className="w-80 h-1 bg-[#D4AF37] mt-4" />
+          <div className="w-40 md:w-80 h-1.5 bg-[#D4AF37] mt-6" />
         </div>
 
-        {/* Lista de Experiencias (Línea de tiempo) */}
-        <div className="space-y-24 border-l border-white/10 ml-4 md:ml-8">
+        {/* Timeline */}
+        <div className="space-y-32 border-l border-white/10 ml-4 md:ml-8">
           {experience.map((item, index) => (
             <article
               key={index}
-              className="relative pl-8 md:pl-16 group transition-all duration-500"
+              className="relative pl-8 md:pl-20 group transition-all duration-500"
             >
-              {/* El Punto de la línea de tiempo (Neon effect on hover) */}
-              <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-white group-hover:bg-[#9A001F] group-hover:shadow-[0_0_15px_#9A001F] transition-all duration-300" />
+              {/* Punto indicador */}
+              <div className="absolute -left-[6px] top-3 w-3 h-3 bg-white group-hover:bg-[#9A001F] group-hover:shadow-[0_0_20px_#9A001F] transition-all duration-500 rounded-full" />
 
-              {/* Contenido en una sola columna gigante */}
               <div className="w-full">
-                {/* 1. Encabezado de la Experiencia */}
-                <div className="mb-6">
-                  <span className="text-[#D4AF37] font-mono text-sm tracking-widest uppercase mb-2 block">
+                {/* Header: Fecha, Rol y Empresa */}
+                <div className="mb-10">
+                  <span className="text-[#D4AF37] font-mono text-sm tracking-[0.3em] uppercase mb-3 block">
                     {item.period}
                   </span>
-                  <h3 className="text-3xl md:text-5xl font-bold text-white mb-2 group-hover:text-[#9A001F] transition-colors">
+                  <h3 className="text-4xl md:text-6xl font-black text-white mb-3 group-hover:text-[#9A001F] transition-colors duration-500">
                     {item.role}
                   </h3>
-                  <span className="text-white/60 text-lg md:text-xl font-medium tracking-tight block">
+                  <span className="text-white/40 text-xl md:text-2xl font-light tracking-tight block">
                     @ {item.company}
                   </span>
                 </div>
-
-                {/* 2. Descripción */}
-                <p className="text-[#A0A0A0] leading-relaxed font-serif text-base md:text-lg italic opacity-80 group-hover:opacity-100 transition-opacity max-w-4xl mb-12">
-                  {item.description}
-                </p>
-
-                {/* 3. GRID 2x2 DE PROYECTOS */}
-                {/* Solo dibuja el componente Bento si hay proyectos en el arreglo */}
+                {/* Renderizado de Bentos (Los 4 proyectos) */}
                 {item.projects && item.projects.length > 0 && (
                   <ProjectBento projects={item.projects} />
                 )}
@@ -58,18 +50,11 @@ export default function ExperienceSection() {
         </div>
       </div>
 
-      {/* Marca de agua Kanji: 'Noche' (夜) */}
-      <div
-        className="absolute 
-          -bottom-10 -left-16 
-          md:-bottom-20 md:-left-20 
-          text-[20rem] md:text-[30rem] 
-          font-bold text-white/[0.03] 
-          select-none pointer-events-none 
-          z-0 leading-none"
-      >
+      {/* Marca de agua Kanji */}
+      <div className="absolute -bottom-20 -left-20 text-[25rem] md:text-[40rem] font-bold text-white/[0.02] select-none pointer-events-none z-0 leading-none">
         夜
       </div>
+      <ScrollArrow href="#abilities" label="Abilities" />
     </section>
   );
 }

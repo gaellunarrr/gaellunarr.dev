@@ -3,7 +3,6 @@ interface ButtonProps {
   mobileLabel?: string;
   href: string;
   download?: boolean;
-  icon?: React.ReactNode;
   className?: string;
 }
 
@@ -12,7 +11,6 @@ export function Button({
   mobileLabel = "CV",
   href,
   download,
-  icon,
   className,
 }: ButtonProps) {
   return (

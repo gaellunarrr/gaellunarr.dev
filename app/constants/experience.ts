@@ -1,16 +1,15 @@
 export const experience = [
   {
-    role: "Full Stack Developer",
-    company: "Empresa Ejemplo",
-    period: "2024 - Presente",
-    description:
-      "Lideré el desarrollo del frontend y la arquitectura de bases de datos. Optimicé los flujos de trabajo e implementé interfaces modernas.",
+    role: "Web Developer",
+    company: "Lapsus Innovations",
+    period: "September 2024 - February 2026",
     projects: [
       {
-        title: "coatlUX POS",
+        title:
+          "Web Page for Torre AzhariWebsite for Torre Azhari Apartment Complex",
         description:
-          "Sistema de punto de venta moderno con interfaces adaptables para diferentes roles de usuario.",
-        tech: "Next.js & Tailwind",
+          "Developed a modern website for the Torre Azhari apartment complex in Aguascalientes, improving user accessibility and overall experience. The project prioritized performance optimization and secure handling of sensitive information.",
+        tech: ["nextjs, react, typescript, tailwind css"],
         repoUrl: "https://github.com/gaellunarrr",
         liveUrl: "#", // Borra esta línea si no hay link en vivo
       },
@@ -18,11 +17,37 @@ export const experience = [
         title: "Proyecto 2",
         description:
           "Descripción breve del segundo proyecto que desarrollaste aquí.",
-        tech: "React & Node.js",
+        tech: ["react, node.js"],
         repoUrl: "https://github.com/gaellunarrr",
       },
-      // ... los otros 2 proyectos
+      {
+        title: "Proyecto 3",
+        description:
+          "Descripción breve del tercer proyecto que desarrollaste aquí.",
+        tech: ["react, node.js"],
+        repoUrl: "https://github.com/gaellunarrr",
+      },
+      {
+        title: "Proyecto 2",
+        description:
+          "Descripción breve del segundo proyecto que desarrollaste aquí.",
+        tech: ["react, node.js"],
+        repoUrl: "https://github.com/gaellunarrr",
+      },
     ],
   },
-  // ... otras experiencias (pueden o no tener el array 'projects')
+  {
+    role: "Full Stack Developer",
+    company: "Freelance",
+    period: "February 2026 - Present",
+    projects: [
+      {
+        title: "Proyecto Freelance 1",
+        description:
+          "Descripción breve del proyecto freelance que desarrollaste aquí.",
+        tech: ["react, node.js"],
+        repoUrl: "https://github.com/gaellunarrr",
+      },
+    ],
+  },
 ];
