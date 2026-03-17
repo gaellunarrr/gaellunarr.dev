@@ -48,7 +48,7 @@ export default function ProfileSection() {
               <Button
                 label="Download CV"
                 mobileLabel="CV"
-                href="/public/CV.LUNA_MARTINEZ_GAEL_RODRIGO.pdf"
+                href="/CV.LUNA_MARTINEZ_GAEL_RODRIGO.pdf"
                 download
               />
               <SVG

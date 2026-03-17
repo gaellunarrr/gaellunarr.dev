@@ -3,9 +3,9 @@ import Image from "next/image";
 interface Project {
   title: string;
   description: string;
-  tech: string;
+  tech: string[];
   repoUrl: string;
-  liveUrl: string;
+  liveUrl?: string;
 }
 
 interface ProjectBentoProps {
