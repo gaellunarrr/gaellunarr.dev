@@ -64,7 +64,7 @@ export function ButtonMail() {
           <span
             className={`text-[8px] font-black uppercase tracking-[0.2em] text-[#BC002D] transition-all duration-500 ${copied ? "opacity-100 translate-y-1" : "opacity-0 translate-y-0"}`}
           >
-            ¡Copiado!
+            ¡Copied!
           </span>
         </div>
       </button>
