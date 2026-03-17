@@ -1,25 +1,28 @@
+"use client";
 import { useClipboard } from "../hooks/useClipboard";
 
 export function ButtonMail() {
   const { copied, handleCopy, email } = useClipboard();
 
   return (
-    <div className="absolute left-1/2 -translate-x-1/2 md:left-3 md:translate-x-0 mt-4 flex flex-col items-center md:items-start w-full">
+    <div className="relative z-[100] mt-6 flex justify-center md:justify-start w-full">
       <button
-        onClick={handleCopy}
+        onClick={(e) => {
+          e.stopPropagation(); // Evita que otros eventos interfieran en móvil
+          handleCopy();
+        }}
         className={`
-                group flex items-center gap-3 px-6 py-2.5 
-                bg-white border border-black/5 
-                rounded-full transition-all duration-300 
-                /* Efecto de Sombra y Elevación */
-                shadow-[0_10px_20px_-10px_rgba(0,0,0,0.1)] 
-                hover:shadow-[0_15px_30px_-10px_rgba(188,0,45,0.15)] 
-                hover:-translate-y-0.5 active:scale-95
-                ${copied ? "ring-2 ring-[#BC002D]/20 border-[#BC002D]/30" : ""}
-              `}
+          group flex items-center gap-3 px-6 py-2.5 
+          bg-white border border-black/5 
+          rounded-full transition-all duration-300 
+          shadow-[0_10px_20px_-10px_rgba(0,0,0,0.1)] 
+          hover:shadow-[0_15px_30px_-10px_rgba(188,0,45,0.15)] 
+          hover:-translate-y-0.5 active:scale-95 touch-manipulation
+          ${copied ? "ring-2 ring-[#BC002D]/20 border-[#BC002D]/30" : ""}
+        `}
       >
         <span
-          className={`text-sm font-bold tracking-tight transition-colors duration-300 ${copied ? "text-[#BC002D]" : "text-[#4A4A4A] group-hover:text-black"}`}
+          className={`text-xs md:text-sm font-bold tracking-tight transition-colors duration-300 ${copied ? "text-[#BC002D]" : "text-[#4A4A4A] group-hover:text-black"}`}
         >
           {email}
         </span>
@@ -56,12 +59,12 @@ export function ButtonMail() {
           )}
         </div>
 
-        {/* Alerta de Copiado (Ajustada para que no mueva nada) */}
-        <div className="absolute top-full left-0 w-full flex justify-center pt-2 pointer-events-none">
+        {/* Alerta Success - Posicionada absoluta para no empujar nada */}
+        <div className="absolute top-full left-0 w-full flex justify-center pt-1 pointer-events-none">
           <span
-            className={`text-[9px] font-black uppercase tracking-[0.2em] text-[#BC002D] transition-all duration-500 ${copied ? "opacity-100 translate-y-1" : "opacity-0 translate-y-0"}`}
+            className={`text-[8px] font-black uppercase tracking-[0.2em] text-[#BC002D] transition-all duration-500 ${copied ? "opacity-100 translate-y-1" : "opacity-0 translate-y-0"}`}
           >
-            Success Copy
+            ¡Copiado!
           </span>
         </div>
       </button>

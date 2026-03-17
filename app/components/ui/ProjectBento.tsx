@@ -14,9 +14,10 @@ interface ProjectBentoProps {
 
 export function ProjectBento({ projects }: ProjectBentoProps) {
   return (
-    <div className="flex flex-col gap-16 md:gap-24 mt-12">
+    // 1. Cambiamos gap-16 por gap-0 en móvil, manteniendo md:gap-24 para escritorio
+    <div className="flex flex-col gap-0 md:gap-24 mt-12">
       {projects.map((project, index) => (
-        <div key={index} className="w-full">
+        <div key={index} className="w-full flex flex-col">
           {/* CONTENEDOR PRINCIPAL */}
           <div className="flex flex-col md:grid md:grid-cols-3 md:grid-rows-[1fr_auto] gap-4 min-h-[420px]">
             {/* DESCRIPCIÓN */}
@@ -26,7 +27,7 @@ export function ProjectBento({ projects }: ProjectBentoProps) {
                 <span className="text-[#9A001F]">.</span>
               </h4>
 
-              <p className="text-[#A0A0A0] text-base md:text-xl leading-relaxed font-serif italic opacity-80">
+              <p className="text-[#A0A0A0] text-base md:text-xl leading-relaxed opacity-80">
                 {project.description}
               </p>
             </div>
@@ -55,7 +56,7 @@ export function ProjectBento({ projects }: ProjectBentoProps) {
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#1A1A1A] rounded-3xl p-6 flex flex-col items-center justify-center gap-3 group border border-white/10 hover:bg-white hover:border-white transition-all duration-500 shadow-lg shadow-black/20"
+                className="bg-[#f8cbcb] rounded-3xl p-6 flex flex-col items-center justify-center gap-3 group border border-white/10 hover:bg-white hover:border-white transition-all duration-500 shadow-lg shadow-black/20"
               >
                 <div className="w-7 h-7 md:w-8 md:h-8 relative">
                   <Image
@@ -67,7 +68,7 @@ export function ProjectBento({ projects }: ProjectBentoProps) {
                   />
                 </div>
 
-                <span className="text-[#9DA7B3] group-hover:text-black text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-500">
+                <span className="text-[#000000] group-hover:text-black text-[10px] font-black tracking-[0.2em] uppercase transition-colors duration-500">
                   Source Code
                 </span>
               </a>
@@ -101,6 +102,16 @@ export function ProjectBento({ projects }: ProjectBentoProps) {
               </a>
             </div>
           </div>
+
+          {/* 2. SEPARADOR VISUAL MÓVIL (Solo se renderiza si no es el último proyecto) */}
+          {index !== projects.length - 1 && (
+            <div className="flex md:hidden items-center justify-center py-12">
+              <div className="w-2/3 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent relative">
+                {/* Rombo decorativo en el centro */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-[#9A001F] rotate-45 opacity-80" />
+              </div>
+            </div>
+          )}
         </div>
       ))}
     </div>

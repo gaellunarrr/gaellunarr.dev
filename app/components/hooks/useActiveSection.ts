@@ -5,29 +5,48 @@ export function useActiveSection(sectionIds: string[]) {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Buscamos cuál sección está más cerca de la parte superior del navegador
-      const offsets = sectionIds.map((id) => {
+      const viewportHeight = window.innerHeight;
+      const centerOfScreen = viewportHeight / 2;
+
+      let currentSection = "";
+
+      // Recorremos las secciones para ver cuál contiene el "centro" de la pantalla
+      for (const id of sectionIds) {
         const el = document.getElementById(id);
-        if (!el) return { id, offset: Infinity };
-        // Calculamos la distancia del elemento al tope de la pantalla
+        if (!el) continue;
+
         const rect = el.getBoundingClientRect();
-        return { id, offset: Math.abs(rect.top) };
-      });
 
-      // La sección con el offset más pequeño es la que el usuario está viendo
-      const closest = offsets.reduce((prev, curr) =>
-        prev.offset < curr.offset ? prev : curr,
-      );
+        // Si el centro de la pantalla está dentro de los límites de esta sección
+        if (rect.top <= centerOfScreen && rect.bottom >= centerOfScreen) {
+          currentSection = id;
+          break;
+        }
+      }
 
-      setActiveSection(closest.id);
+      // Caso especial: Si estamos muy arriba (Home), forzamos Home
+      if (window.scrollY < 100) {
+        currentSection = sectionIds[0];
+      }
+
+      // Caso especial: Si llegamos al final de la página, forzamos la última sección
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 50
+      ) {
+        currentSection = sectionIds[sectionIds.length - 1];
+      }
+
+      if (currentSection && currentSection !== activeSection) {
+        setActiveSection(currentSection);
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    // Ejecutar una vez al inicio
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [sectionIds]);
+  }, [sectionIds, activeSection]);
 
   return activeSection;
 }

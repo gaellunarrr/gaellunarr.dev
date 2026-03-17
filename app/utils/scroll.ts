@@ -6,7 +6,7 @@ export const smoothScrollTo = (id: string) => {
     window.pageYOffset + element.getBoundingClientRect().top;
   const startPosition = window.pageYOffset;
   const distance = targetPosition - startPosition;
-  const duration = 1000; // tiempo del scroll (ms)
+  const duration = 1000;
   let start: number | null = null;
 
   const ease = (t: number) =>

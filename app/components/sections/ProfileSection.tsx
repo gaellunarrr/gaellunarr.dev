@@ -48,7 +48,7 @@ export default function ProfileSection() {
               <Button
                 label="Download CV"
                 mobileLabel="CV"
-                href="/cv.pdf"
+                href="/public/CV.LUNA_MARTINEZ_GAEL_RODRIGO.pdf"
                 download
               />
               <SVG
@@ -66,9 +66,12 @@ export default function ProfileSection() {
             <h2 className="text-2xl font-bold text-[#1A1A1A] mb-3">
               Who I am?
             </h2>
-            <p className="text-[#4A4A4A] leading-relaxed font-serif text-base md:text-lg italic px-4 md:px-0">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            <p className="text-[#4A4A4A] leading-relaxed text-base md:text-lg px-4 md:px-0">
+              <span className="font-bold text-[#BC002D] animate-[pulse_2s_ease-in-out_infinite]">
+                +1 year of experience
+              </span>{" "}
+              in software development, always prioritizing results and the
+              satisfaction of both clients and the industry.
             </p>
           </div>
         </div>
